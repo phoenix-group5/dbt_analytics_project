@@ -16,5 +16,6 @@ select
     when cost_per_conversion > 0 then cast(cost_per_conversion as decimal(18,2))
     else 0
   end as cost_per_conversion
-FROM {{ source('raw', 'campaign_performance') }}
+  from {{ ref ("src_campaign_performance")}}
+-- FROM {{ source('raw', 'campaign_performance') }} 
 WHERE PERFORMANCE_ID IS NOT NULL
