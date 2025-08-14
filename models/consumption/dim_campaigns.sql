@@ -1,13 +1,13 @@
-with channels as (
-    select *
-    from {{ ref ("trs_channels")}}
-),
-campaigns as (
-    select * 
-    from {{ ref("trs_campaigns")}}
-),
+-- with channels as (
+--     select *
+--     from {{ ref ("trs_channels")}}
+-- ),
+-- campaigns as (
+--     select * 
+--     from {{ ref("trs_campaigns")}}
+-- ),
 
-dim_campaigns as (
+-- dim_campaigns as (
     select cp.campaign_id,
     cp.channel_id,
     cp.campaign_name,
@@ -20,8 +20,9 @@ dim_campaigns as (
     cp.status,
     ch.channel_type,
     ch.cost_per_channel
-    from campaigns cp
-    join channels ch on cp.channel_id = ch.channel_id
-)
+    from {{ref("trs_campaigns")}} cp
+    left join {{ref ("trs_channels")}} ch 
+    on cp.channel_id = ch.channel_id --all campaigns should have a channel
+-- )
 
-select * from dim_campaigns
+-- select * from dim_campaigns
