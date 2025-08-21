@@ -12,5 +12,5 @@ select
   coalesce(conversion_count, 0) as conversion_count,
   coalesce(bounce_count, 0) as bounce_count,
   coalesce(unsubscribe_count, 0) as unsubscribe_count
-FROM {{ source('raw', 'email_campaigns') }}
+FROM {{ ref("stg_email_campaigns") }}
 WHERE EMAIL_CAMPAIGN_ID IS NOT NULL

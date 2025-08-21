@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: trs_compaigns
+  - name: trs_campaigns
     columns:
       - name: campaign_id
         description: primary key
@@ -9,14 +9,13 @@ models:
           - not_null
           - unique
           - relationships:
-              field: <campaign_id>
               to: ref('trs_campaign_performance')
+              field: campaign_id
           - relationships:
-              field: <campaign_id>
               to: ref('trs_email_campaigns')
+              field: campaign_id
 
-
-  - name: campaign_performance
+  - name: trs_campaign_performance
     columns:
       - name: performance_id
         description: primary key
@@ -24,7 +23,7 @@ models:
           - not_null
           - unique
 
-  - name: trs_channel
+  - name: trs_channels
     columns:
       - name: channel_id
         description: primary key
@@ -32,8 +31,8 @@ models:
           - not_null
           - unique
           - relationships:
-              field: <channel_id>
               to: ref('trs_campaigns')
+              field: channel_id
 
   - name: trs_email_campaigns
     columns:
@@ -43,8 +42,9 @@ models:
           - not_null
           - unique
           - relationships:
-              field: <list_id>
               to: ref('trs_email_lists')
+              field: list_id
+
   - name: trs_email_lists
     columns:
       - name: list_id

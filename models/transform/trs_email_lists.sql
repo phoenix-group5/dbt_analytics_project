@@ -6,5 +6,5 @@ select
   trim(description) as description,
   created_date,
   coalesce(subscriber_count, 0) as subscriber_count
-FROM {{ source('raw', 'email_lists') }}
+FROM {{ref("stg_email_lists") }}
 WHERE LIST_ID IS NOT NULL
