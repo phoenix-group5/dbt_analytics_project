@@ -15,5 +15,5 @@ select
   trim(preferences) as preferences,
   subscription_date,
   trim(subscription_source) as subscription_source
-FROM {{ source('raw', 'subscribers') }}
+FROM {{ref("stg_subscribers") }}
 WHERE SUBSCRIBER_ID IS NOT NULL

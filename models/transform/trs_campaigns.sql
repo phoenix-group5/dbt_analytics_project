@@ -18,6 +18,6 @@ select
 	trim(target_audience) as target_audience,
 	coalesce(budget, 0) as budget,
 	trim(status) as status
-FROM {{ source('raw', 'campaigns') }}
+FROM {{ ref("stg_campaigns") }}
 WHERE CAMPAIGN_ID IS NOT NULL
 
