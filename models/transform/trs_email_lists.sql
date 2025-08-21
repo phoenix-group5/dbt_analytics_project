@@ -1,5 +1,6 @@
 select
-  list_id,
+  list_id as source_list_id,
+  {{ dbt_utils.generate_surrogate_key(['list_id', 'list_name']) }} as list_id,
   trim(list_name) as list_name,
   trim(list_type) as list_type,
   trim(description) as description,
