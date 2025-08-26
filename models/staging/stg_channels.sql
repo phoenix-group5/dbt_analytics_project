@@ -1,0 +1,6 @@
+SELECT
+CHANNEL_ID, 
+CHANNEL_NAME, 
+CHANNEL_TYPE, 
+COST_PER_CHANNEL
+FROM {{source("raw","channels")}}

@@ -1,39 +1,43 @@
 version: 2
 
 models:
-  - name: trs_compaigns
+  - name: trs_campaigns
     columns:
       - name: campaign_id
         description: primary key
         tests:
           - not_null
           - unique
+      - name: channel_id
+        description: foreign key to trs_channels
+        tests:
+          - not_null
           - relationships:
-              field: <campaign_id>
-              to: ref('trs_campaign_performance')
-          - relationships:
-              field: <campaign_id>
-              to: ref('trs_email_campaigns')
+              to: ref('trs_channels')
+              field: channel_id
 
-
-  - name: campaign_performance
+  - name: trs_campaign_performance
     columns:
       - name: performance_id
         description: primary key
         tests:
           - not_null
           - unique
+      - name: campaign_id
+        description: foreign key to trs_campaigns
+        tests:
+          - not_null
+          - relationships:
+              to: ref('trs_campaigns')
+              field: campaign_id
 
-  - name: trs_channel
+  - name: trs_channels
     columns:
       - name: channel_id
         description: primary key
         tests:
           - not_null
           - unique
-          - relationships:
-              field: <channel_id>
-              to: ref('trs_campaigns')
 
   - name: trs_email_campaigns
     columns:
@@ -42,9 +46,21 @@ models:
         tests:
           - not_null
           - unique
+      - name: campaign_id
+        description: foreign key to trs_campaigns
+        tests:
+          - not_null
           - relationships:
-              field: <list_id>
+              to: ref('trs_campaigns')
+              field: campaign_id
+      - name: list_id
+        description: foreign key to trs_email_lists
+        tests:
+          - not_null
+          - relationships:
               to: ref('trs_email_lists')
+              field: list_id
+
   - name: trs_email_lists
     columns:
       - name: list_id
