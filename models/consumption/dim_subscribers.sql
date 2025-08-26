@@ -18,7 +18,9 @@ with
 
     email_lists as (
         select
-            list_id, list_name, list_type, description, created_date, subscriber_count
+            list_id as source_list_id, 
+--            {{ dbt_utils.generate_surrogate_key(['list_id', 'list_name']) }} as key_list_id,
+            list_name, list_type, description, created_date, subscriber_count
         from {{ ref("trs_email_lists") }}
     ),
 
@@ -34,6 +36,7 @@ with
             su.age_group,
             su.preferences,
             su.list_id,
+--            el.key_list_id,
             el.list_name,
             el.list_type,
             el.description,  -- i removed the list_id from el, as well as the created date 

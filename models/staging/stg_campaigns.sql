@@ -9,3 +9,8 @@ BUDGET,
 STATUS, 
 TARGET_AUDIENCE
 FROM {{source("raw","campaigns")}}
+
+--with campaigns as (
+--    select * from {{source ('raw', 'campaigns')}}
+--)
+--select * from campaigns

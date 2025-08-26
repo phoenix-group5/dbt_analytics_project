@@ -1,13 +1,4 @@
-SELECT
-PERFORMANCE_ID,
-DATE,
-CAMPAIGN_ID,
-SPEND, 
-REVENUE,
-CLICKS, 
-CONVERSIONS,
-IMPRESSIONS,
-COST_PER_CLICK,
-LEADS_GENERATED, 
-COST_PER_CONVERSION
-FROM {{source("raw","campaign_performance")}}
+with camp_performance as (
+    select * from {{source ('raw', 'campaign_performance')}}
+)
+select * from camp_performance
