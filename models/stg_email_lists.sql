@@ -1,1 +1,0 @@
-select * from {{source("raw", "email_lists")}}
