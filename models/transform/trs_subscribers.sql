@@ -1,7 +1,7 @@
 select
   subscriber_id,
   list_id,
-   trim(email) as email,
+trim(lower(email)) as email,
   trim(first_name) as first_name,
   trim(last_name) as last_name,
   case

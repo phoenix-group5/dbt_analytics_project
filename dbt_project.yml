@@ -44,3 +44,6 @@ models:
     transform:
       +materialized: table
       +schema: transform
+    consumption:
+      +materialized: table
+      +schema: consumption
