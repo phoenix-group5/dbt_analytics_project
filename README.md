@@ -3,10 +3,10 @@
 A comprehensive dbt project that transforms raw marketing data into a star schema for analytics and reporting.
 
 # Overview
-Source Systems: PostgreSQL (extracted via Airbyte)
-Data Warehouse: Snowflake
-Transformation Tool: dbt Cloud
-Version Control: GitHub
+- Source Systems: PostgreSQL (extracted via Airbyte)
+- Data Warehouse: Snowflake
+- Transformation Tool: dbt Cloud
+- Version Control: GitHub
 
 ## Project Structure
 
@@ -137,4 +137,5 @@ The project is configured to:
 - Learn more about dbt [in the docs](https://docs.getdbt.com/docs/introduction)
 - Check out [Discourse](https://discourse.getdbt.com/) for commonly asked questions and answers
 - Join the [dbt community](http://community.getdbt.com/) to connect with other Analytics Engineers
+
 
